@@ -10,6 +10,8 @@ import com.lib.EFUN_ATTR;
 import com.lib.FunSDK;
 import com.lib.sdk.struct.SInitParam;
 
+import java.util.Locale;
+
 /**
  * @author hws
  * @class describe
@@ -30,15 +32,15 @@ public class MyAppliation extends Application {
     private void initSdk(){
         SInitParam param = new SInitParam();
         param.st_0_nAppType = SInitParam.LOGIN_TYPE_MOBILE;
-//        String country = Locale.getDefault().getCountry();
-//        String language = Locale.getDefault().getLanguage();
-//        if (language.equalsIgnoreCase("zh")
-//                && (country.equalsIgnoreCase("TW")
-//                || country.equalsIgnoreCase("HK"))) {
-//            G.SetValue(param.st_2_language, country.toLowerCase());
-//        }else {
-//            G.SetValue(param.st_2_language, Locale.getDefault().getLanguage());
-//        }
+        String country = Locale.getDefault().getCountry();
+        String language = Locale.getDefault().getLanguage();
+        if (language.equalsIgnoreCase("zh")
+                && (country.equalsIgnoreCase("TW")
+                || country.equalsIgnoreCase("HK"))) {
+            G.SetValue(param.st_2_language, country.toLowerCase());
+        }else {
+            G.SetValue(param.st_2_language, Locale.getDefault().getLanguage());
+        }
         FunSDK.Init(0, G.ObjToBytes(param));
         int a = FunSDK.SysInitNet("223.4.33.127;54.84.132.236;112.124.0.188", 15010);
         FunSDK.XMCloundPlatformInit(APP_UUID, APP_KEY, APP_SECRET, APP_MOVECARD);

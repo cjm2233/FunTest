@@ -26,6 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
         <activity android:name=".MainActivity">
 
         </activity>
@@ -37,6 +39,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisterActivity">
+        </activity>
+        <activity android:name=".activity.AddDeviceActivity">
+        </activity>
+        <activity android:name=".activity.DeviceActivity">
+        </activity>
+        <activity android:name=".activity.MediaActivity">
+        </activity>
+        <activity android:name=".activity.DeleteDeviceActivity">
         </activity>
     </application>
 

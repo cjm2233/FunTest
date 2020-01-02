@@ -1,7 +1,6 @@
 package com.example.funtest.activity;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,48 +83,52 @@ public class RegisterActivity extends BaseActivity implements OnFunRegisterListe
             }
         });
     }
-    private void setGetcode(){
+
+    private void setGetcode() {
         usernameStr = username.getText().toString();
-        password1Str = password1.getText().toString();
-        password2Str = password2.getText().toString();
-        checkcodeStr = checkcode.getText().toString();
         phoneStr = phone.getText().toString();
-        FunSDK.SysSendPhoneMsg(sdkutil.getHander(),usernameStr,phoneStr,0);
+        FunSDK.SysSendPhoneMsg(sdkutil.getHander(), usernameStr, phoneStr, 0);
     }
-    private void register(){
+
+    private void register() {
         usernameStr = username.getText().toString();
         password1Str = password1.getText().toString();
         password2Str = password2.getText().toString();
         checkcodeStr = checkcode.getText().toString();
         phoneStr = phone.getText().toString();
-        if (password1 == password2) {
+        if (password1Str.equals(password1Str)) {
             FunSDK.SysRegUserToXM(sdkutil.getHander(), usernameStr, password1Str, checkcodeStr, phoneStr, 0);
-        }else{
-            Toast.makeText(MyAppliation.getContext(),"两次密码不同",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(MyAppliation.getContext(), "两次密码不同", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onRequestSendCodeSuccess() {
-        Toast.makeText(RegisterActivity.this,"验证码已发送",Toast.LENGTH_SHORT).show();
+        Toast.makeText(RegisterActivity.this, "验证码已发送", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onRequestSendCodeFailed(Integer errCode) {
-        Toast.makeText(RegisterActivity.this,"验证码发送失败",Toast.LENGTH_SHORT).show();
-        Log.i("yanzhenmafasongshibai",errCode.toString());
+        Toast.makeText(RegisterActivity.this, "验证码发送失败", Toast.LENGTH_SHORT).show();
+        Log.i("yanzhenmafasongshibai", errCode.toString());
     }
 
     @Override
     public void onRegisterNewUserSuccess() {
-        Toast.makeText(MyAppliation.getContext(),"注册成功",Toast.LENGTH_SHORT).show();
-        Intent intent= new Intent(RegisterActivity.this,LoginActivity.class);
-        startActivity(intent);
+        Toast.makeText(MyAppliation.getContext(), "注册成功", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void onRegisterNewUserFailed(Integer errCode) {
-        Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT).show();
-        Log.i("zhuceshibai",errCode.toString());
+        Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
+        Log.i("zhuceshibai", errCode.toString());
+    }
+
+    @Override
+    protected void onDestroy() {
+        sdkutil.removeOnFunRegisterListener(this);
+        super.onDestroy();
     }
 }

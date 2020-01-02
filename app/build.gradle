@@ -45,4 +45,6 @@ dependencies {
     implementation files('libs/LibFunSDK.jar')
     implementation files('libs/fastjson-1.2.8.jar')
     implementation files('libs/LibFishEye.jar')
+    implementation 'com.android.support:recyclerview-v7:29.4.0'
+    implementation files('libs/commons-lang3-3.1.jar')
 }

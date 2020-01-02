@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FunTest</string>
+    <string-array name="record_type">
+        <item>All</item>
+        <item>Alarm</item>
+        <item>Detection</item>
+        <item>Normal</item>
+        <item>Manual</item>
+        <item>Remote</item>
+    </string-array>
+    <string-array name="pic_type">
+        <item>All</item>
+        <item>Alarm</item>
+        <item>Detection</item>
+        <item>Normal</item>
+        <item>Remote control</item>
+        <item>Key</item>
+        <item>Time delay shot</item>
+        <item>Continuous shooting</item>
+    </string-array>
 </resources>
